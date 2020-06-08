@@ -1,0 +1,672 @@
+nohup: ignoring input
+Using TensorFlow backend.
+/data1/jiawei_he/anaconda3/envs/unet/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:526: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/data1/jiawei_he/anaconda3/envs/unet/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:527: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/data1/jiawei_he/anaconda3/envs/unet/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:528: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/data1/jiawei_he/anaconda3/envs/unet/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:529: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/data1/jiawei_he/anaconda3/envs/unet/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:530: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/data1/jiawei_he/anaconda3/envs/unet/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:535: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+WARNING:tensorflow:From /data1/jiawei_he/anaconda3/envs/unet/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+2020-06-06 17:20:19.064080: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-06-06 17:20:19.071426: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2194700000 Hz
+2020-06-06 17:20:19.073567: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x56256e1d6d20 executing computations on platform Host. Devices:
+2020-06-06 17:20:19.073589: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2020-06-06 17:20:22.523717: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1433] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:87:00.0
+totalMemory: 10.92GiB freeMemory: 10.77GiB
+2020-06-06 17:20:22.810290: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1433] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:88:00.0
+totalMemory: 10.92GiB freeMemory: 10.77GiB
+2020-06-06 17:20:22.812461: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1512] Adding visible gpu devices: 0, 1
+2020-06-06 17:20:22.824335: I tensorflow/core/common_runtime/gpu/gpu_device.cc:984] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-06-06 17:20:22.824370: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990]      0 1 
+2020-06-06 17:20:22.824383: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1003] 0:   N Y 
+2020-06-06 17:20:22.824393: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1003] 1:   Y N 
+2020-06-06 17:20:22.824567: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10481 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:87:00.0, compute capability: 6.1)
+2020-06-06 17:20:22.825036: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:1 with 10481 MB memory) -> physical GPU (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:88:00.0, compute capability: 6.1)
+2020-06-06 17:20:22.828767: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x56256f07dfc0 executing computations on platform CUDA. Devices:
+2020-06-06 17:20:22.828828: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2020-06-06 17:20:22.828844: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (1): GeForce GTX 1080 Ti, Compute Capability 6.1
+WARNING:tensorflow:From /data1/jiawei_he/anaconda3/envs/unet/lib/python3.7/site-packages/keras/backend/tensorflow_backend.py:3733: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+./src/retinaNN_training.py:191: UserWarning: The `nb_epoch` argument in `fit` has been renamed `epochs`.
+  model.fit(patches_imgs_train, patches_masks_train, nb_epoch=N_epochs, batch_size=batch_size, verbose=2, shuffle=True, validation_split=0.1, callbacks=[checkpointer])
+WARNING:tensorflow:From /data1/jiawei_he/anaconda3/envs/unet/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /data1/jiawei_he/anaconda3/envs/unet/lib/python3.7/site-packages/tensorflow/python/ops/math_grad.py:102: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+
+train images/masks shape:
+(20, 1, 565, 565)
+train images range (min-max): 0.0 - 1.0
+train masks are within 0-1
+
+patches per full image: 9500
+
+train PATCHES images/masks shape:
+(190000, 1, 48, 48)
+train PATCHES images range (min-max): 0.0 - 1.0
+Check: final output of the network:
+(None, 2304, 2)
+Train on 171000 samples, validate on 19000 samples
+Epoch 1/150
+ - 130s - loss: 0.2700 - acc: 0.9042 - val_loss: 0.1738 - val_acc: 0.9387
+
+Epoch 00001: val_loss improved from inf to 0.17380, saving model to ./test/test_best_weights.h5
+Epoch 2/150
+ - 130s - loss: 0.1621 - acc: 0.9401 - val_loss: 0.1278 - val_acc: 0.9524
+
+Epoch 00002: val_loss improved from 0.17380 to 0.12777, saving model to ./test/test_best_weights.h5
+Epoch 3/150
+ - 131s - loss: 0.1458 - acc: 0.9455 - val_loss: 0.1250 - val_acc: 0.9544
+
+Epoch 00003: val_loss improved from 0.12777 to 0.12502, saving model to ./test/test_best_weights.h5
+Epoch 4/150
+ - 132s - loss: 0.1383 - acc: 0.9480 - val_loss: 0.1137 - val_acc: 0.9572
+
+Epoch 00004: val_loss improved from 0.12502 to 0.11367, saving model to ./test/test_best_weights.h5
+Epoch 5/150
+ - 131s - loss: 0.1332 - acc: 0.9498 - val_loss: 0.1111 - val_acc: 0.9578
+
+Epoch 00005: val_loss improved from 0.11367 to 0.11106, saving model to ./test/test_best_weights.h5
+Epoch 6/150
+ - 131s - loss: 0.1296 - acc: 0.9511 - val_loss: 0.1076 - val_acc: 0.9594
+
+Epoch 00006: val_loss improved from 0.11106 to 0.10760, saving model to ./test/test_best_weights.h5
+Epoch 7/150
+ - 130s - loss: 0.1268 - acc: 0.9520 - val_loss: 0.1096 - val_acc: 0.9580
+
+Epoch 00007: val_loss did not improve from 0.10760
+Epoch 8/150
+ - 130s - loss: 0.1245 - acc: 0.9529 - val_loss: 0.1074 - val_acc: 0.9585
+
+Epoch 00008: val_loss improved from 0.10760 to 0.10743, saving model to ./test/test_best_weights.h5
+Epoch 9/150
+ - 131s - loss: 0.1225 - acc: 0.9535 - val_loss: 0.1034 - val_acc: 0.9602
+
+Epoch 00009: val_loss improved from 0.10743 to 0.10343, saving model to ./test/test_best_weights.h5
+Epoch 10/150
+ - 129s - loss: 0.1209 - acc: 0.9540 - val_loss: 0.1019 - val_acc: 0.9608
+
+Epoch 00010: val_loss improved from 0.10343 to 0.10191, saving model to ./test/test_best_weights.h5
+Epoch 11/150
+ - 129s - loss: 0.1194 - acc: 0.9546 - val_loss: 0.1033 - val_acc: 0.9603
+
+Epoch 00011: val_loss did not improve from 0.10191
+Epoch 12/150
+ - 130s - loss: 0.1182 - acc: 0.9550 - val_loss: 0.1041 - val_acc: 0.9599
+
+Epoch 00012: val_loss did not improve from 0.10191
+Epoch 13/150
+ - 130s - loss: 0.1171 - acc: 0.9553 - val_loss: 0.0989 - val_acc: 0.9619
+
+Epoch 00013: val_loss improved from 0.10191 to 0.09894, saving model to ./test/test_best_weights.h5
+Epoch 14/150
+ - 130s - loss: 0.1161 - acc: 0.9557 - val_loss: 0.0986 - val_acc: 0.9621
+
+Epoch 00014: val_loss improved from 0.09894 to 0.09856, saving model to ./test/test_best_weights.h5
+Epoch 15/150
+ - 130s - loss: 0.1152 - acc: 0.9560 - val_loss: 0.1035 - val_acc: 0.9597
+
+Epoch 00015: val_loss did not improve from 0.09856
+Epoch 16/150
+ - 130s - loss: 0.1143 - acc: 0.9563 - val_loss: 0.0979 - val_acc: 0.9620
+
+Epoch 00016: val_loss improved from 0.09856 to 0.09788, saving model to ./test/test_best_weights.h5
+Epoch 17/150
+ - 129s - loss: 0.1136 - acc: 0.9565 - val_loss: 0.0962 - val_acc: 0.9626
+
+Epoch 00017: val_loss improved from 0.09788 to 0.09617, saving model to ./test/test_best_weights.h5
+Epoch 18/150
+ - 130s - loss: 0.1128 - acc: 0.9568 - val_loss: 0.0961 - val_acc: 0.9627
+
+Epoch 00018: val_loss improved from 0.09617 to 0.09609, saving model to ./test/test_best_weights.h5
+Epoch 19/150
+ - 129s - loss: 0.1122 - acc: 0.9570 - val_loss: 0.0979 - val_acc: 0.9621
+
+Epoch 00019: val_loss did not improve from 0.09609
+Epoch 20/150
+ - 129s - loss: 0.1116 - acc: 0.9572 - val_loss: 0.0986 - val_acc: 0.9617
+
+Epoch 00020: val_loss did not improve from 0.09609
+Epoch 21/150
+ - 129s - loss: 0.1110 - acc: 0.9574 - val_loss: 0.0953 - val_acc: 0.9628
+
+Epoch 00021: val_loss improved from 0.09609 to 0.09533, saving model to ./test/test_best_weights.h5
+Epoch 22/150
+ - 130s - loss: 0.1105 - acc: 0.9576 - val_loss: 0.0959 - val_acc: 0.9628
+
+Epoch 00022: val_loss did not improve from 0.09533
+Epoch 23/150
+ - 129s - loss: 0.1100 - acc: 0.9578 - val_loss: 0.0969 - val_acc: 0.9624
+
+Epoch 00023: val_loss did not improve from 0.09533
+Epoch 24/150
+ - 129s - loss: 0.1095 - acc: 0.9580 - val_loss: 0.0944 - val_acc: 0.9634
+
+Epoch 00024: val_loss improved from 0.09533 to 0.09443, saving model to ./test/test_best_weights.h5
+Epoch 25/150
+ - 129s - loss: 0.1090 - acc: 0.9581 - val_loss: 0.1058 - val_acc: 0.9599
+
+Epoch 00025: val_loss did not improve from 0.09443
+Epoch 26/150
+ - 129s - loss: 0.1086 - acc: 0.9583 - val_loss: 0.0942 - val_acc: 0.9632
+
+Epoch 00026: val_loss improved from 0.09443 to 0.09425, saving model to ./test/test_best_weights.h5
+Epoch 27/150
+ - 129s - loss: 0.1081 - acc: 0.9584 - val_loss: 0.0949 - val_acc: 0.9629
+
+Epoch 00027: val_loss did not improve from 0.09425
+Epoch 28/150
+ - 129s - loss: 0.1077 - acc: 0.9586 - val_loss: 0.0941 - val_acc: 0.9634
+
+Epoch 00028: val_loss improved from 0.09425 to 0.09408, saving model to ./test/test_best_weights.h5
+Epoch 29/150
+ - 130s - loss: 0.1073 - acc: 0.9587 - val_loss: 0.0939 - val_acc: 0.9635
+
+Epoch 00029: val_loss improved from 0.09408 to 0.09392, saving model to ./test/test_best_weights.h5
+Epoch 30/150
+ - 130s - loss: 0.1070 - acc: 0.9588 - val_loss: 0.0927 - val_acc: 0.9639
+
+Epoch 00030: val_loss improved from 0.09392 to 0.09271, saving model to ./test/test_best_weights.h5
+Epoch 31/150
+ - 130s - loss: 0.1066 - acc: 0.9590 - val_loss: 0.0947 - val_acc: 0.9632
+
+Epoch 00031: val_loss did not improve from 0.09271
+Epoch 32/150
+ - 130s - loss: 0.1063 - acc: 0.9591 - val_loss: 0.0945 - val_acc: 0.9632
+
+Epoch 00032: val_loss did not improve from 0.09271
+Epoch 33/150
+ - 130s - loss: 0.1059 - acc: 0.9592 - val_loss: 0.0922 - val_acc: 0.9641
+
+Epoch 00033: val_loss improved from 0.09271 to 0.09216, saving model to ./test/test_best_weights.h5
+Epoch 34/150
+ - 130s - loss: 0.1056 - acc: 0.9593 - val_loss: 0.0926 - val_acc: 0.9638
+
+Epoch 00034: val_loss did not improve from 0.09216
+Epoch 35/150
+ - 130s - loss: 0.1053 - acc: 0.9594 - val_loss: 0.0970 - val_acc: 0.9622
+
+Epoch 00035: val_loss did not improve from 0.09216
+Epoch 36/150
+ - 130s - loss: 0.1049 - acc: 0.9595 - val_loss: 0.0922 - val_acc: 0.9641
+
+Epoch 00036: val_loss did not improve from 0.09216
+Epoch 37/150
+ - 130s - loss: 0.1046 - acc: 0.9597 - val_loss: 0.0926 - val_acc: 0.9639
+
+Epoch 00037: val_loss did not improve from 0.09216
+Epoch 38/150
+ - 129s - loss: 0.1043 - acc: 0.9598 - val_loss: 0.0931 - val_acc: 0.9636
+
+Epoch 00038: val_loss did not improve from 0.09216
+Epoch 39/150
+ - 129s - loss: 0.1040 - acc: 0.9599 - val_loss: 0.0928 - val_acc: 0.9639
+
+Epoch 00039: val_loss did not improve from 0.09216
+Epoch 40/150
+ - 129s - loss: 0.1037 - acc: 0.9600 - val_loss: 0.0933 - val_acc: 0.9636
+
+Epoch 00040: val_loss did not improve from 0.09216
+Epoch 41/150
+ - 129s - loss: 0.1035 - acc: 0.9600 - val_loss: 0.0919 - val_acc: 0.9641
+
+Epoch 00041: val_loss improved from 0.09216 to 0.09194, saving model to ./test/test_best_weights.h5
+Epoch 42/150
+ - 129s - loss: 0.1032 - acc: 0.9601 - val_loss: 0.0930 - val_acc: 0.9638
+
+Epoch 00042: val_loss did not improve from 0.09194
+Epoch 43/150
+ - 129s - loss: 0.1029 - acc: 0.9602 - val_loss: 0.0909 - val_acc: 0.9645
+
+Epoch 00043: val_loss improved from 0.09194 to 0.09090, saving model to ./test/test_best_weights.h5
+Epoch 44/150
+ - 129s - loss: 0.1027 - acc: 0.9603 - val_loss: 0.0928 - val_acc: 0.9636
+
+Epoch 00044: val_loss did not improve from 0.09090
+Epoch 45/150
+ - 128s - loss: 0.1025 - acc: 0.9604 - val_loss: 0.0923 - val_acc: 0.9642
+
+Epoch 00045: val_loss did not improve from 0.09090
+Epoch 46/150
+ - 127s - loss: 0.1022 - acc: 0.9605 - val_loss: 0.0928 - val_acc: 0.9639
+
+Epoch 00046: val_loss did not improve from 0.09090
+Epoch 47/150
+ - 127s - loss: 0.1020 - acc: 0.9606 - val_loss: 0.0930 - val_acc: 0.9638
+
+Epoch 00047: val_loss did not improve from 0.09090
+Epoch 48/150
+ - 127s - loss: 0.1017 - acc: 0.9606 - val_loss: 0.0910 - val_acc: 0.9644
+
+Epoch 00048: val_loss did not improve from 0.09090
+Epoch 49/150
+ - 126s - loss: 0.1015 - acc: 0.9607 - val_loss: 0.0920 - val_acc: 0.9640
+
+Epoch 00049: val_loss did not improve from 0.09090
+Epoch 50/150
+ - 126s - loss: 0.1013 - acc: 0.9608 - val_loss: 0.0907 - val_acc: 0.9646
+
+Epoch 00050: val_loss improved from 0.09090 to 0.09065, saving model to ./test/test_best_weights.h5
+Epoch 51/150
+ - 126s - loss: 0.1011 - acc: 0.9609 - val_loss: 0.0959 - val_acc: 0.9625
+
+Epoch 00051: val_loss did not improve from 0.09065
+Epoch 52/150
+ - 126s - loss: 0.1008 - acc: 0.9609 - val_loss: 0.0935 - val_acc: 0.9635
+
+Epoch 00052: val_loss did not improve from 0.09065
+Epoch 53/150
+ - 126s - loss: 0.1006 - acc: 0.9610 - val_loss: 0.0967 - val_acc: 0.9625
+
+Epoch 00053: val_loss did not improve from 0.09065
+Epoch 54/150
+ - 126s - loss: 0.1004 - acc: 0.9611 - val_loss: 0.0910 - val_acc: 0.9644
+
+Epoch 00054: val_loss did not improve from 0.09065
+Epoch 55/150
+ - 126s - loss: 0.1002 - acc: 0.9612 - val_loss: 0.0917 - val_acc: 0.9641
+
+Epoch 00055: val_loss did not improve from 0.09065
+Epoch 56/150
+ - 126s - loss: 0.1000 - acc: 0.9612 - val_loss: 0.0939 - val_acc: 0.9634
+
+Epoch 00056: val_loss did not improve from 0.09065
+Epoch 57/150
+ - 126s - loss: 0.0998 - acc: 0.9613 - val_loss: 0.0950 - val_acc: 0.9629
+
+Epoch 00057: val_loss did not improve from 0.09065
+Epoch 58/150
+ - 126s - loss: 0.0996 - acc: 0.9614 - val_loss: 0.0903 - val_acc: 0.9646
+
+Epoch 00058: val_loss improved from 0.09065 to 0.09025, saving model to ./test/test_best_weights.h5
+Epoch 59/150
+ - 126s - loss: 0.0995 - acc: 0.9614 - val_loss: 0.0913 - val_acc: 0.9643
+
+Epoch 00059: val_loss did not improve from 0.09025
+Epoch 60/150
+ - 128s - loss: 0.0993 - acc: 0.9615 - val_loss: 0.0917 - val_acc: 0.9640
+
+Epoch 00060: val_loss did not improve from 0.09025
+Epoch 61/150
+ - 127s - loss: 0.0990 - acc: 0.9616 - val_loss: 0.0906 - val_acc: 0.9646
+
+Epoch 00061: val_loss did not improve from 0.09025
+Epoch 62/150
+ - 126s - loss: 0.0989 - acc: 0.9616 - val_loss: 0.0905 - val_acc: 0.9646
+
+Epoch 00062: val_loss did not improve from 0.09025
+Epoch 63/150
+ - 126s - loss: 0.0987 - acc: 0.9617 - val_loss: 0.0921 - val_acc: 0.9639
+
+Epoch 00063: val_loss did not improve from 0.09025
+Epoch 64/150
+ - 128s - loss: 0.0985 - acc: 0.9617 - val_loss: 0.0907 - val_acc: 0.9644
+
+Epoch 00064: val_loss did not improve from 0.09025
+Epoch 65/150
+ - 128s - loss: 0.0983 - acc: 0.9618 - val_loss: 0.0906 - val_acc: 0.9644
+
+Epoch 00065: val_loss did not improve from 0.09025
+Epoch 66/150
+ - 127s - loss: 0.0982 - acc: 0.9618 - val_loss: 0.0910 - val_acc: 0.9644
+
+Epoch 00066: val_loss did not improve from 0.09025
+Epoch 67/150
+ - 126s - loss: 0.0980 - acc: 0.9619 - val_loss: 0.0904 - val_acc: 0.9645
+
+Epoch 00067: val_loss did not improve from 0.09025
+Epoch 68/150
+ - 126s - loss: 0.0979 - acc: 0.9620 - val_loss: 0.0897 - val_acc: 0.9649
+
+Epoch 00068: val_loss improved from 0.09025 to 0.08973, saving model to ./test/test_best_weights.h5
+Epoch 69/150
+ - 126s - loss: 0.0977 - acc: 0.9620 - val_loss: 0.0902 - val_acc: 0.9647
+
+Epoch 00069: val_loss did not improve from 0.08973
+Epoch 70/150
+ - 126s - loss: 0.0975 - acc: 0.9621 - val_loss: 0.0902 - val_acc: 0.9647
+
+Epoch 00070: val_loss did not improve from 0.08973
+Epoch 71/150
+ - 126s - loss: 0.0974 - acc: 0.9621 - val_loss: 0.0906 - val_acc: 0.9645
+
+Epoch 00071: val_loss did not improve from 0.08973
+Epoch 72/150
+ - 126s - loss: 0.0972 - acc: 0.9622 - val_loss: 0.0898 - val_acc: 0.9648
+
+Epoch 00072: val_loss did not improve from 0.08973
+Epoch 73/150
+ - 126s - loss: 0.0970 - acc: 0.9622 - val_loss: 0.0907 - val_acc: 0.9644
+
+Epoch 00073: val_loss did not improve from 0.08973
+Epoch 74/150
+ - 126s - loss: 0.0969 - acc: 0.9623 - val_loss: 0.0905 - val_acc: 0.9645
+
+Epoch 00074: val_loss did not improve from 0.08973
+Epoch 75/150
+ - 126s - loss: 0.0967 - acc: 0.9623 - val_loss: 0.0899 - val_acc: 0.9649
+
+Epoch 00075: val_loss did not improve from 0.08973
+Epoch 76/150
+ - 126s - loss: 0.0966 - acc: 0.9624 - val_loss: 0.0897 - val_acc: 0.9648
+
+Epoch 00076: val_loss improved from 0.08973 to 0.08971, saving model to ./test/test_best_weights.h5
+Epoch 77/150
+ - 129s - loss: 0.0965 - acc: 0.9624 - val_loss: 0.0903 - val_acc: 0.9645
+
+Epoch 00077: val_loss did not improve from 0.08971
+Epoch 78/150
+ - 127s - loss: 0.0963 - acc: 0.9625 - val_loss: 0.0908 - val_acc: 0.9644
+
+Epoch 00078: val_loss did not improve from 0.08971
+Epoch 79/150
+ - 127s - loss: 0.0961 - acc: 0.9625 - val_loss: 0.0898 - val_acc: 0.9648
+
+Epoch 00079: val_loss did not improve from 0.08971
+Epoch 80/150
+ - 127s - loss: 0.0960 - acc: 0.9626 - val_loss: 0.0903 - val_acc: 0.9645
+
+Epoch 00080: val_loss did not improve from 0.08971
+Epoch 81/150
+ - 127s - loss: 0.0959 - acc: 0.9626 - val_loss: 0.0899 - val_acc: 0.9647
+
+Epoch 00081: val_loss did not improve from 0.08971
+Epoch 82/150
+ - 127s - loss: 0.0957 - acc: 0.9626 - val_loss: 0.0912 - val_acc: 0.9642
+
+Epoch 00082: val_loss did not improve from 0.08971
+Epoch 83/150
+ - 126s - loss: 0.0956 - acc: 0.9627 - val_loss: 0.0926 - val_acc: 0.9638
+
+Epoch 00083: val_loss did not improve from 0.08971
+Epoch 84/150
+ - 126s - loss: 0.0955 - acc: 0.9627 - val_loss: 0.0909 - val_acc: 0.9643
+
+Epoch 00084: val_loss did not improve from 0.08971
+Epoch 85/150
+ - 126s - loss: 0.0953 - acc: 0.9628 - val_loss: 0.0911 - val_acc: 0.9642
+
+Epoch 00085: val_loss did not improve from 0.08971
+Epoch 86/150
+ - 127s - loss: 0.0952 - acc: 0.9628 - val_loss: 0.0897 - val_acc: 0.9648
+
+Epoch 00086: val_loss improved from 0.08971 to 0.08969, saving model to ./test/test_best_weights.h5
+Epoch 87/150
+ - 126s - loss: 0.0951 - acc: 0.9628 - val_loss: 0.0902 - val_acc: 0.9645
+
+Epoch 00087: val_loss did not improve from 0.08969
+Epoch 88/150
+ - 126s - loss: 0.0949 - acc: 0.9629 - val_loss: 0.0904 - val_acc: 0.9645
+
+Epoch 00088: val_loss did not improve from 0.08969
+Epoch 89/150
+ - 126s - loss: 0.0948 - acc: 0.9630 - val_loss: 0.0930 - val_acc: 0.9632
+
+Epoch 00089: val_loss did not improve from 0.08969
+Epoch 90/150
+ - 126s - loss: 0.0946 - acc: 0.9630 - val_loss: 0.0923 - val_acc: 0.9638
+
+Epoch 00090: val_loss did not improve from 0.08969
+Epoch 91/150
+ - 126s - loss: 0.0945 - acc: 0.9630 - val_loss: 0.0903 - val_acc: 0.9646
+
+Epoch 00091: val_loss did not improve from 0.08969
+Epoch 92/150
+ - 126s - loss: 0.0944 - acc: 0.9631 - val_loss: 0.0908 - val_acc: 0.9643
+
+Epoch 00092: val_loss did not improve from 0.08969
+Epoch 93/150
+ - 126s - loss: 0.0943 - acc: 0.9631 - val_loss: 0.0921 - val_acc: 0.9638
+
+Epoch 00093: val_loss did not improve from 0.08969
+Epoch 94/150
+ - 126s - loss: 0.0941 - acc: 0.9632 - val_loss: 0.0924 - val_acc: 0.9637
+
+Epoch 00094: val_loss did not improve from 0.08969
+Epoch 95/150
+ - 126s - loss: 0.0940 - acc: 0.9632 - val_loss: 0.0919 - val_acc: 0.9638
+
+Epoch 00095: val_loss did not improve from 0.08969
+Epoch 96/150
+ - 126s - loss: 0.0939 - acc: 0.9632 - val_loss: 0.0905 - val_acc: 0.9644
+
+Epoch 00096: val_loss did not improve from 0.08969
+Epoch 97/150
+ - 127s - loss: 0.0938 - acc: 0.9633 - val_loss: 0.0901 - val_acc: 0.9647
+
+Epoch 00097: val_loss did not improve from 0.08969
+Epoch 98/150
+ - 126s - loss: 0.0936 - acc: 0.9633 - val_loss: 0.0901 - val_acc: 0.9646
+
+Epoch 00098: val_loss did not improve from 0.08969
+Epoch 99/150
+ - 126s - loss: 0.0935 - acc: 0.9634 - val_loss: 0.0907 - val_acc: 0.9642
+
+Epoch 00099: val_loss did not improve from 0.08969
+Epoch 100/150
+ - 127s - loss: 0.0934 - acc: 0.9634 - val_loss: 0.0911 - val_acc: 0.9642
+
+Epoch 00100: val_loss did not improve from 0.08969
+Epoch 101/150
+ - 126s - loss: 0.0933 - acc: 0.9634 - val_loss: 0.0929 - val_acc: 0.9636
+
+Epoch 00101: val_loss did not improve from 0.08969
+Epoch 102/150
+ - 126s - loss: 0.0932 - acc: 0.9635 - val_loss: 0.0909 - val_acc: 0.9642
+
+Epoch 00102: val_loss did not improve from 0.08969
+Epoch 103/150
+ - 126s - loss: 0.0931 - acc: 0.9635 - val_loss: 0.0935 - val_acc: 0.9631
+
+Epoch 00103: val_loss did not improve from 0.08969
+Epoch 104/150
+ - 126s - loss: 0.0929 - acc: 0.9635 - val_loss: 0.0910 - val_acc: 0.9643
+
+Epoch 00104: val_loss did not improve from 0.08969
+Epoch 105/150
+ - 126s - loss: 0.0928 - acc: 0.9636 - val_loss: 0.0900 - val_acc: 0.9646
+
+Epoch 00105: val_loss did not improve from 0.08969
+Epoch 106/150
+ - 126s - loss: 0.0927 - acc: 0.9636 - val_loss: 0.0915 - val_acc: 0.9640
+
+Epoch 00106: val_loss did not improve from 0.08969
+Epoch 107/150
+ - 126s - loss: 0.0926 - acc: 0.9636 - val_loss: 0.0909 - val_acc: 0.9642
+
+Epoch 00107: val_loss did not improve from 0.08969
+Epoch 108/150
+ - 126s - loss: 0.0925 - acc: 0.9637 - val_loss: 0.0908 - val_acc: 0.9644
+
+Epoch 00108: val_loss did not improve from 0.08969
+Epoch 109/150
+ - 126s - loss: 0.0924 - acc: 0.9637 - val_loss: 0.0913 - val_acc: 0.9642
+
+Epoch 00109: val_loss did not improve from 0.08969
+Epoch 110/150
+ - 126s - loss: 0.0923 - acc: 0.9638 - val_loss: 0.0915 - val_acc: 0.9640
+
+Epoch 00110: val_loss did not improve from 0.08969
+Epoch 111/150
+ - 126s - loss: 0.0922 - acc: 0.9638 - val_loss: 0.0917 - val_acc: 0.9639
+
+Epoch 00111: val_loss did not improve from 0.08969
+Epoch 112/150
+ - 126s - loss: 0.0921 - acc: 0.9638 - val_loss: 0.0924 - val_acc: 0.9636
+
+Epoch 00112: val_loss did not improve from 0.08969
+Epoch 113/150
+ - 126s - loss: 0.0919 - acc: 0.9639 - val_loss: 0.0900 - val_acc: 0.9648
+
+Epoch 00113: val_loss did not improve from 0.08969
+Epoch 114/150
+ - 126s - loss: 0.0918 - acc: 0.9639 - val_loss: 0.0907 - val_acc: 0.9644
+
+Epoch 00114: val_loss did not improve from 0.08969
+Epoch 115/150
+ - 126s - loss: 0.0917 - acc: 0.9639 - val_loss: 0.0915 - val_acc: 0.9642
+
+Epoch 00115: val_loss did not improve from 0.08969
+Epoch 116/150
+ - 126s - loss: 0.0916 - acc: 0.9640 - val_loss: 0.0908 - val_acc: 0.9643
+
+Epoch 00116: val_loss did not improve from 0.08969
+Epoch 117/150
+ - 127s - loss: 0.0915 - acc: 0.9640 - val_loss: 0.0917 - val_acc: 0.9640
+
+Epoch 00117: val_loss did not improve from 0.08969
+Epoch 118/150
+ - 126s - loss: 0.0914 - acc: 0.9640 - val_loss: 0.0905 - val_acc: 0.9644
+
+Epoch 00118: val_loss did not improve from 0.08969
+Epoch 119/150
+ - 126s - loss: 0.0913 - acc: 0.9640 - val_loss: 0.0936 - val_acc: 0.9632
+
+Epoch 00119: val_loss did not improve from 0.08969
+Epoch 120/150
+ - 126s - loss: 0.0912 - acc: 0.9641 - val_loss: 0.0944 - val_acc: 0.9628
+
+Epoch 00120: val_loss did not improve from 0.08969
+Epoch 121/150
+ - 126s - loss: 0.0911 - acc: 0.9641 - val_loss: 0.0901 - val_acc: 0.9647
+
+Epoch 00121: val_loss did not improve from 0.08969
+Epoch 122/150
+ - 128s - loss: 0.0910 - acc: 0.9642 - val_loss: 0.0913 - val_acc: 0.9643
+
+Epoch 00122: val_loss did not improve from 0.08969
+Epoch 123/150
+ - 128s - loss: 0.0909 - acc: 0.9642 - val_loss: 0.0908 - val_acc: 0.9645
+
+Epoch 00123: val_loss did not improve from 0.08969
+Epoch 124/150
+ - 129s - loss: 0.0908 - acc: 0.9642 - val_loss: 0.0913 - val_acc: 0.9643
+
+Epoch 00124: val_loss did not improve from 0.08969
+Epoch 125/150
+ - 129s - loss: 0.0907 - acc: 0.9643 - val_loss: 0.0907 - val_acc: 0.9646
+
+Epoch 00125: val_loss did not improve from 0.08969
+Epoch 126/150
+ - 129s - loss: 0.0906 - acc: 0.9643 - val_loss: 0.0906 - val_acc: 0.9646
+
+Epoch 00126: val_loss did not improve from 0.08969
+Epoch 127/150
+ - 129s - loss: 0.0905 - acc: 0.9643 - val_loss: 0.0917 - val_acc: 0.9641
+
+Epoch 00127: val_loss did not improve from 0.08969
+Epoch 128/150
+ - 129s - loss: 0.0905 - acc: 0.9643 - val_loss: 0.0906 - val_acc: 0.9646
+
+Epoch 00128: val_loss did not improve from 0.08969
+Epoch 129/150
+ - 129s - loss: 0.0903 - acc: 0.9644 - val_loss: 0.0908 - val_acc: 0.9645
+
+Epoch 00129: val_loss did not improve from 0.08969
+Epoch 130/150
+ - 129s - loss: 0.0903 - acc: 0.9644 - val_loss: 0.0935 - val_acc: 0.9634
+
+Epoch 00130: val_loss did not improve from 0.08969
+Epoch 131/150
+ - 129s - loss: 0.0901 - acc: 0.9644 - val_loss: 0.0913 - val_acc: 0.9642
+
+Epoch 00131: val_loss did not improve from 0.08969
+Epoch 132/150
+ - 129s - loss: 0.0901 - acc: 0.9645 - val_loss: 0.0905 - val_acc: 0.9647
+
+Epoch 00132: val_loss did not improve from 0.08969
+Epoch 133/150
+ - 129s - loss: 0.0899 - acc: 0.9645 - val_loss: 0.0911 - val_acc: 0.9643
+
+Epoch 00133: val_loss did not improve from 0.08969
+Epoch 134/150
+ - 129s - loss: 0.0899 - acc: 0.9645 - val_loss: 0.0911 - val_acc: 0.9644
+
+Epoch 00134: val_loss did not improve from 0.08969
+Epoch 135/150
+ - 129s - loss: 0.0898 - acc: 0.9645 - val_loss: 0.0916 - val_acc: 0.9642
+
+Epoch 00135: val_loss did not improve from 0.08969
+Epoch 136/150
+ - 129s - loss: 0.0897 - acc: 0.9646 - val_loss: 0.0913 - val_acc: 0.9643
+
+Epoch 00136: val_loss did not improve from 0.08969
+Epoch 137/150
+ - 129s - loss: 0.0896 - acc: 0.9646 - val_loss: 0.0929 - val_acc: 0.9635
+
+Epoch 00137: val_loss did not improve from 0.08969
+Epoch 138/150
+ - 129s - loss: 0.0895 - acc: 0.9646 - val_loss: 0.0915 - val_acc: 0.9643
+
+Epoch 00138: val_loss did not improve from 0.08969
+Epoch 139/150
+ - 129s - loss: 0.0894 - acc: 0.9647 - val_loss: 0.0932 - val_acc: 0.9635
+
+Epoch 00139: val_loss did not improve from 0.08969
+Epoch 140/150
+ - 129s - loss: 0.0893 - acc: 0.9647 - val_loss: 0.0910 - val_acc: 0.9645
+
+Epoch 00140: val_loss did not improve from 0.08969
+Epoch 141/150
+ - 129s - loss: 0.0892 - acc: 0.9647 - val_loss: 0.0926 - val_acc: 0.9638
+
+Epoch 00141: val_loss did not improve from 0.08969
+Epoch 142/150
+ - 129s - loss: 0.0891 - acc: 0.9648 - val_loss: 0.0954 - val_acc: 0.9626
+
+Epoch 00142: val_loss did not improve from 0.08969
+Epoch 143/150
+ - 129s - loss: 0.0890 - acc: 0.9648 - val_loss: 0.0913 - val_acc: 0.9645
+
+Epoch 00143: val_loss did not improve from 0.08969
+Epoch 144/150
+ - 129s - loss: 0.0889 - acc: 0.9648 - val_loss: 0.0922 - val_acc: 0.9641
+
+Epoch 00144: val_loss did not improve from 0.08969
+Epoch 145/150
+ - 129s - loss: 0.0889 - acc: 0.9648 - val_loss: 0.0909 - val_acc: 0.9646
+
+Epoch 00145: val_loss did not improve from 0.08969
+Epoch 146/150
+ - 129s - loss: 0.0888 - acc: 0.9649 - val_loss: 0.0921 - val_acc: 0.9641
+
+Epoch 00146: val_loss did not improve from 0.08969
+Epoch 147/150
+ - 129s - loss: 0.0887 - acc: 0.9649 - val_loss: 0.0923 - val_acc: 0.9639
+
+Epoch 00147: val_loss did not improve from 0.08969
+Epoch 148/150
+ - 129s - loss: 0.0886 - acc: 0.9649 - val_loss: 0.0914 - val_acc: 0.9644
+
+Epoch 00148: val_loss did not improve from 0.08969
+Epoch 149/150
+ - 129s - loss: 0.0885 - acc: 0.9649 - val_loss: 0.0932 - val_acc: 0.9636
+
+Epoch 00149: val_loss did not improve from 0.08969
+Epoch 150/150
+ - 129s - loss: 0.0884 - acc: 0.9650 - val_loss: 0.0916 - val_acc: 0.9643
+
+Epoch 00150: val_loss did not improve from 0.08969
+run_training.py:13: DeprecationWarning: This method will be removed in future versions.  Use 'parser.read_file()' instead.
+  config.readfp(open(r'./configuration.txt'))
+
+1. Create directory for the results (if not already existing)
+Dir already existing
+copy the configuration file in the results folder
+
+2. Run the training on GPU (no nohup)
